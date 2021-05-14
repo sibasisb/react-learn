@@ -2,53 +2,109 @@
 
 /**
  * this violates liskov substitution
- * Square type is not able to replace Rectangle type
+ * makeBirdFly takes Bird type object
+ * should be replaceable by its subtypes
+ * Duck instance meets criteria
+ * Penguin instance does not
+ * Watch out for too many overriding methods
+ * That means code from parent class not reusable
  */
-class Rectangle{
+// class Bird{
 
-    constructor(width,height){
-        this.width=width
-        this.height=height
-    }
+//     fly(){
+//         console.log(`This bird can fly`);
+//     }
 
-    setWidth(width){
-        this.width=width
-    }
+// }
 
-    setHeight(height){
-        this.height=height
-    }
-
-    findArea(){
-        let area=this.width* this.height;
-        console.log(`Area: ${area}`);
-    }
-
-}
-
-class Square extends Rectangle{
+// class Duck extends Bird{
     
-    setWidth(width){
-        this.width=width
-        this.height=width
-    }
+//     quack(){
+//         console.log('This bird can quack');
+//     }
 
-    setHeight(height){
-        this.height=height
-        this.width=height
+// }
+
+// class Penguin extends Bird{
+    
+//     fly(){
+//         throw new Error("This bird cannot fly")
+//     }
+
+//     swim(){
+//         console.log('This bird can swim');
+//     }
+
+// }
+
+// const makeBirdFly=(bird)=>{
+//     bird.fly()
+// }
+
+// module.exports=()=>{
+//     const duck=new Duck()
+//     makeBirdFly(duck)
+//     const penguin=new Penguin()
+//     makeBirdFly(penguin)
+// }
+
+
+/**
+ * this does not violate liskov substitution
+ * makeFlyingBirdFly takes FlyingBird type object
+ * should be replaceable by its subtypes
+ * Duck instance meets criteria
+ * Penguin instance meets criteria for SwimmingBird
+ * Watch out for too many overriding methods
+ * That means code from parent class not reusable
+ */
+ class FlyingBird{
+
+    fly(){
+        console.log(`This bird can fly`);
     }
 
 }
 
-const increaseWidthOfRectangle=(rectangle)=>{
-    rectangle.setWidth(rectangle.height + 1)
+class SwimmingBird{
+
+    swim(){
+        console.log(`This bird can swim`);
+    }
+
+}
+
+class Duck extends FlyingBird{
+    
+    quack(){
+        console.log('This bird can quack');
+    }
+
+}
+
+class Penguin extends SwimmingBird{
+    
+    fly(){
+        throw new Error("This bird cannot fly")
+    }
+
+    swim(){
+        console.log('This bird can swim');
+    }
+
+}
+
+const makeSwimmingBirdSwim=(swimmingBird)=>{
+    swimmingBird.swim()
+}
+
+const makeFlyingBirdFly=(flyingBird)=>{
+    flyingBird.fly()
 }
 
 module.exports=()=>{
-    const square=new Square(5,5)
-    const rectangle=new Rectangle(5,5)
-    increaseWidthOfRectangle(square)
-    increaseWidthOfRectangle(rectangle)
-    rectangle.findArea()
-    square.findArea()
+    const duck=new Duck()
+    makeFlyingBirdFly(duck)
+    const penguin=new Penguin()
+    makeSwimmingBirdSwim(penguin)
 }
