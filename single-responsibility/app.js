@@ -2,6 +2,8 @@ const exerciseOps=require('./operations/exerciseOps')
 const carOps=require('./operations/carOps')
 const shapeOps=require('./operations/shapeOps')
 const birdOps=require('./operations/birdOps')
+const cardOps=require('./operations/cardOps')
+
 // demonstrate single responsibility principle
 //exerciseOps();
 
@@ -12,4 +14,7 @@ const birdOps=require('./operations/birdOps')
 //shapeOps();
 
 //demonstrate Interface segregation
-birdOps();
+//birdOps();
+
+//demonstrate dependency inversion
+cardOps();
