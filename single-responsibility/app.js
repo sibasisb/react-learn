@@ -1,6 +1,7 @@
 const exerciseOps=require('./operations/exerciseOps')
 const carOps=require('./operations/carOps')
 const shapeOps=require('./operations/shapeOps')
+const birdOps=require('./operations/birdOps')
 // demonstrate single responsibility principle
 //exerciseOps();
 
@@ -8,4 +9,7 @@ const shapeOps=require('./operations/shapeOps')
 //carOps();
 
 //demonstrate Liskov's substitution
-shapeOps();
+//shapeOps();
+
+//demonstrate Interface segregation
+birdOps();

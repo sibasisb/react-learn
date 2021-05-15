@@ -88,10 +88,6 @@ class Penguin extends SwimmingBird{
         throw new Error("This bird cannot fly")
     }
 
-    swim(){
-        console.log('This bird can swim');
-    }
-
 }
 
 const makeSwimmingBirdSwim=(swimmingBird)=>{
